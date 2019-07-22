@@ -1,35 +1,15 @@
-import React, { Component } from "react"
-import { Dropdown, Menu, Button, Icon } from "antd"
-
-import images from "assets"
-import "./Header.scss"
-
-const { SubMenu } = Menu
+import React, { Component } from "react";
+import images from "assets";
+import "./Header.scss";
 
 class Header extends Component {
-  menu = (
-    <div>
-      <Menu className="userMenu">
-        <Menu.ItemGroup
-          title={
-            <div>
-              <h3>User</h3> <p>Email</p>
-            </div>
-          }
-        >
-          <Menu.Divider />
-          <Menu.Item key="1">Edit Profile</Menu.Item>
-          <Menu.Item key="2">Change Password</Menu.Item>
-          <Menu.Item key="3">Log Out</Menu.Item>
-        </Menu.ItemGroup>
-      </Menu>
-      <Menu className="userMenu">
-        <Menu.Item key="1">Super Admin Dashboard</Menu.Item>
-        <Menu.Item key="2">Sales Dashboard</Menu.Item>
-        <Menu.Item key="3">Designer Dashboard</Menu.Item>
-      </Menu>
-    </div>
-  )
+  state = { isShow: false };
+  showMenu = () => {
+    this.setState({ isShow: !this.state.isShow });
+    console.log(this.state);
+  };
+
+  show = this.state.isShow ? "show" : "";
   render() {
     return (
       <div className="header">
@@ -40,36 +20,42 @@ class Header extends Component {
           </h3>
         </div>
         <div className="headerRight">
-          {/* <Dropdown overlay={this.menu}>
-            <Button>User</Button>
-          </Dropdown> */}
-
-          <Menu className="userMenu" mode="inline">
-            <SubMenu title="User" key="sub1">
-              <Menu.ItemGroup
-                className="menuGroup menuGroupUser"
-                title={
-                  <div>
-                    <h3>User</h3> <p>Email</p>
-                  </div>
-                }
-              >
-                <Menu.Divider />
-                <Menu.Item key="1">Edit Profile</Menu.Item>
-                <Menu.Item key="2">Change Password</Menu.Item>
-                <Menu.Item key="3">Log Out</Menu.Item>
-              </Menu.ItemGroup>
-              <Menu.ItemGroup className="menuGroup menuGroupManage">
-                <Menu.Item key="4">Super Admin Dashboard</Menu.Item>
-                <Menu.Item key="5">Sales Dashboard</Menu.Item>
-                <Menu.Item key="6">Designer Dashboard</Menu.Item>
-              </Menu.ItemGroup>
-            </SubMenu>
-          </Menu>
+          <div className="userMenu">
+            <button className="btn btn-secondary" onClick={this.showMenu}>
+              AD
+            </button>
+            <div className={`menuDropdown ${this.state.isShow ? "show" : ""}`}>
+              <div className="menuGroup menuGroupUser">
+                <h3>Username</h3>
+                <p>Email</p>
+                <hr />
+                <a className="dropdown-item" href="#">
+                  Edit Profile
+                </a>
+                <a className="dropdown-item" href="#">
+                  Change Password
+                </a>
+                <a className="dropdown-item" href="#">
+                  Logout
+                </a>
+              </div>
+              <div className="menuGroup menuGroupManage">
+                <a className="dropdown-item" href="#">
+                  Super Admin Dashboard
+                </a>
+                <a className="dropdown-item" href="#">
+                  Sales Dashboard
+                </a>
+                <a className="dropdown-item" href="#">
+                  Designer Dashboard
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Header
+export default Header;

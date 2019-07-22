@@ -5,8 +5,8 @@ import ManageUser from "containers/ManageUser"
 function App() {
   return (
     <div className="App">
-      <Login />
-      {/* <ManageUser /> */}
+      {/* <Login /> */}
+      <ManageUser />
       {/* <button className="btn btn-danger">OK</button> */}
     </div>
   )

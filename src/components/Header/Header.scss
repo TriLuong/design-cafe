@@ -1,4 +1,7 @@
 $colorHeaderTitle: #b18c5a;
+$borderColor: #f9f9f9;
+$bgColorGroupManage: #e5e5ea;
+$bgColorGroupUser: #ffffff;
 
 .header {
   display: flex;
@@ -18,15 +21,43 @@ $colorHeaderTitle: #b18c5a;
     }
   }
   .headerRight {
+    width: 25%;
+    position: relative;
     .userMenu {
-      .menuGroup {
-        border: 1px solid gray;
-        text-align: left;
+      display: flex;
+      flex-direction: column;
+      button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        right: 0;
       }
-      .menuGroupUser {
+      .menuDropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 60px;
+        .menuGroup {
+          border-radius: 5px;
+          box-shadow: 0 0 10px $bgColorGroupManage;
+          text-align: left;
+          padding: 15px;
+          .dropdown-item {
+            padding-left: 0;
+          }
+        }
+        .menuGroupUser {
+          border: 1px solid $borderColor;
+          background-color: $bgColorGroupUser;
+        }
+        .menuGroupManage {
+          margin-top: 10px;
+          background-color: $bgColorGroupManage;
+        }
       }
-      .menuGroupManage {
-        margin-top: 10px;
+      .show {
+        display: block;
       }
     }
   }
